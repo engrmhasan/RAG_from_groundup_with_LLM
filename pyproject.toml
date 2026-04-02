@@ -1,0 +1,16 @@
+[project]
+name = "qdrant"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastembed>=0.8.0",
+    "peft>=0.18.1",
+    "qdrant-client>=1.17.1",
+    "torch>=2.11.0",
+    "transformers>=5.4.0",
+]
+
+[tool.uv.extra-build-dependencies]
+flash-attn = ["torch"]
