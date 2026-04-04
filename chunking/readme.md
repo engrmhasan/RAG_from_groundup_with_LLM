@@ -375,10 +375,10 @@ It still becomes `current_chunk = part`. The algorithm does not discard it. Recu
 
 
 
-# Extended Example: Text Larger Than Max Chunk Size
+## Extended Example: Text Larger Than Max Chunk Size
 
 
-## Input
+### Input
 
 ```
 Artificial intelligence is transforming the world at an unprecedented pace, influencing industries, societies,
