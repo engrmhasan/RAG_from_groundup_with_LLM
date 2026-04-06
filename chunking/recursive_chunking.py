@@ -45,9 +45,10 @@ def recursive_chunking(text: str, max_chunk_size: int = 1000) -> List[str]:
 
 
 doc = """
+
 Artificial intelligence is transforming the world at an unprecedented pace, influencing industries, societies,
- and daily human life in ways that were once considered science fiction. From healthcare systems that can diagnose diseases more accurately 
- than human doctors to financial tools that predict market trends using massive datasets, AI is rapidly becoming a core part of modern infrastructure.
+and daily human life in ways that were once considered science fiction. From healthcare systems that can diagnose diseases more accurately 
+than human doctors to financial tools that predict market trends using massive datasets, AI is rapidly becoming a core part of modern infrastructure.
 Governments and private organizations alike are investing heavily in research and development to stay competitive in this evolving landscape.
 As a result, the demand for skilled professionals in machine learning, data science, and AI ethics is growing significantly across the globe.
 
