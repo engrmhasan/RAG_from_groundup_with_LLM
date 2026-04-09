@@ -257,3 +257,71 @@ print(f"  Total vectors   : {len(points)}")
 print(f"  Query p50       : {latencies[4]:.2f} ms")
 
 client.close()
+
+
+# output:
+# === STAGE 0 — Model Load ===
+#   [tokenizer load]
+#     time     : 576.9 ms
+#     cpu ram  : 1060.2 MB  (Δ +234.6 MB)
+#     gpu vram : 0.0 MB  (Δ +0.0 MB)
+# Loading weights: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 110/110 [00:00<00:00, 5729.50it/s]
+#   [model load + to(cuda)]
+#     time     : 1437.2 ms
+#     cpu ram  : 1578.1 MB  (Δ +517.9 MB)
+#     gpu vram : 911.6 MB  (Δ +911.6 MB)
+
+# === STAGE 1 — Qdrant Collection ===
+#   [qdrant client init]
+#     time     : 4.6 ms
+#     cpu ram  : 1612.8 MB  (Δ +1.5 MB)
+#     gpu vram : 911.6 MB  (Δ +0.0 MB)
+#   [create collection]
+#     time     : 28.7 ms
+#     cpu ram  : 1612.9 MB  (Δ +0.1 MB)
+#     gpu vram : 911.6 MB  (Δ +0.0 MB)
+
+# === STAGE 2 — Chunking ===
+#   [chunking all docs]
+#     time     : 0.2 ms
+#     cpu ram  : 1612.9 MB  (Δ +0.0 MB)
+#     gpu vram : 911.6 MB  (Δ +0.0 MB)
+#     chunks produced: 6
+
+# === STAGE 3 — Embedding ===
+# `use_return_dict` is deprecated! Use `return_dict` instead!
+#   [model.encode (GPU)]
+#     time     : 208.9 ms
+#     cpu ram  : 2138.2 MB  (Δ +525.3 MB)
+#     gpu vram : 919.7 MB  (Δ +8.1 MB)
+#   [tensor → cpu → numpy → list]
+#     time     : 0.2 ms
+#     cpu ram  : 2138.3 MB  (Δ +0.1 MB)
+#     gpu vram : 919.7 MB  (Δ +0.0 MB)
+#     vector dim: 768
+#     throughput: 28.7 chunks/s
+
+# === STAGE 4 — PointStruct Build ===
+#   [build PointStruct list]
+#     time     : 0.2 ms
+#     cpu ram  : 2138.3 MB  (Δ +0.0 MB)
+#     gpu vram : 919.7 MB  (Δ +0.0 MB)
+
+# === STAGE 5 — Qdrant Upsert ===
+#   [upload_points 6 points]
+#     time     : 80.9 ms
+#     cpu ram  : 2138.3 MB  (Δ +0.0 MB)
+#     gpu vram : 919.7 MB  (Δ +0.0 MB)
+
+# === STAGE 6 — Query Latency (10 runs) ===
+#     p50  : 0.29 ms
+#     p90  : 0.32 ms
+#     p99  : 0.69 ms
+#     min  : 0.28 ms
+#     max  : 0.69 ms
+
+# === SUMMARY ===
+#   Peak GPU VRAM   : 957.3 MB
+#   Final CPU RAM   : 2148.1 MB
+#   Total vectors   : 6
+#   Query p50       : 0.29 ms
