@@ -10,3 +10,5 @@ wheels/
 .venv
 jina-embeddings-v5-text-nano/
 connection_qdrant.py
+improve_latent_rag_pipe.md
+qdrant_storage/
